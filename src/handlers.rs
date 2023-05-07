@@ -1,11 +1,10 @@
-use anyhow::Ok;
 use axum::{
     extract::{Extension, Path},
     http::StatusCode,
     response::IntoResponse,
     Json,
 };
-use std::{intrinsics::mir::StaticMut, sync::Arc};
+use std::sync::Arc;
 
 use crate::repositories::{CreateTodo, TodoRepository, UpdateTodo};
 

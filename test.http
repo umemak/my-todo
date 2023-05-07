@@ -8,3 +8,20 @@ content-type: application/json
 {
     "username": "田中太郎"
 }
+
+###
+
+POST http://localhost:3000/todos
+content-type: application/json
+
+{
+    "text": "テスト投稿"
+}
+
+###
+
+GET http://localhost:3000/todos/1
+
+###
+
+GET http://localhost:3000/todos
