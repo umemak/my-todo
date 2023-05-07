@@ -133,5 +133,30 @@ mod test {
 
     #[tokio::test]
     async fn should_update_todo() {
+        let expected = Todo::new(1, "should_update_todo".to_string());
+        let repository = TodoRepositoryForMemory::new();
+        repository.create(CreateTodo::new("before_updatee_todo".to_string()));
+        let req = build_todo_req_with_json(
+            "/todos/1",
+            Method::PATCH,
+            r#"{
+                "id": 1,
+                "text": "should_update_todo",
+                "completed": false
+            }"#
+            .to_string(),
+        );
+        let res = create_app(repository).oneshot(req).await.unwrap();
+        let todo = res_to_todo(res).await;
+        assert_eq!(expected, todo);
+    }
+
+    #[tokio::test]
+    async fn should_delete_todo() {
+        let repository = TodoRepositoryForMemory::new();
+        repository.create(CreateTodo::new("should_delete_todo".to_string()));
+        let req = build_todo_req_with_empty(Method::DELETE, "/todos/1");
+        let res = create_app(repository).oneshot(req).await.unwrap();
+        assert_eq!(StatusCode::NO_CONTENT, res.status());
     }
 }
