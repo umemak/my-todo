@@ -1,6 +1,6 @@
 use axum::{
     async_trait,
-    extract::{Extension, FromRequest, Path, RequestParts, rejection},
+    extract::{Extension, FromRequest, Path, RequestParts},
     http::StatusCode,
     response::IntoResponse,
     BoxError, Json,
