@@ -25,3 +25,7 @@ GET http://localhost:3000/todos/1
 ###
 
 GET http://localhost:3000/todos
+
+###
+
+DELETE http://localhost:3000/todos/1
