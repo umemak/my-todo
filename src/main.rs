@@ -41,7 +41,7 @@ fn create_app<T: TodoRepository>(repository: T) -> Router {
         .route("/", get(root))
         .route("/todos", post(create_todo::<T>).get(all_todo::<T>))
         .route(
-            "todos/:id",
+            "/todos/:id",
             get(find_todo::<T>)
                 .delete(delete_todo::<T>)
                 .patch(update_todo::<T>),
