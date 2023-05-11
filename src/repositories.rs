@@ -143,9 +143,9 @@ mod test {
         // create
         let repository = TodoRepositoryForMemory::new();
         let todo = repository
-        .create(CreateTodo { text })
-        .await
-        .expect("failed create todo");
+            .create(CreateTodo { text })
+            .await
+            .expect("failed create todo");
         assert_eq!(expected, todo);
 
         // find
